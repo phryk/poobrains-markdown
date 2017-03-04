@@ -12,16 +12,6 @@ class MarkdownString(str):
 
 class MarkdownFieldDescriptor(peewee.FieldDescriptor):
 
-#    def __get__(self, instance, instance_type=None):
-#        if instance is not None:
-#            data = instance._data.get(self.att_name)
-#            if not isinstance(data, MarkdownString):
-#                data = MarkdownString(data)
-#
-#            return data
-#
-#        return self.field
-
     def __set__(self, instance, value):
 
         if not isinstance(value, MarkdownString):
