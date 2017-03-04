@@ -1,0 +1,10 @@
+APPLICATION_ROOT="/poobrains-markdown/"
+DATABASE = 'sqlite:///example.db'
+#LOGFILE = '/var/log/poobrains.log'
+DEBUG = True
+#PROPAGATE_EXCEPTIONS = True
+MAY_INSTALL = True
+SECRET_KEY = 'FnordFnord'
+THEME = 'default'
+CA_KEY = 'ssl/webca.key'
+CA_CERT = 'ssl/webca.crt'
