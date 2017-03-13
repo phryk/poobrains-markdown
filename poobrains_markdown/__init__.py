@@ -3,14 +3,25 @@ import jinja2
 import poobrains
 import markdown
 
+try:
 
-parser = markdown.Markdown(output_format="html5") # means we can globally register markdown extensions with "poobrains_markdown.parser.registerExtensions
+    import config
+    if hasattr(config, 'MARKDOWN_CLASS') and issubclass(config.MARKDOWN_CLASS, markdown.Markdown):
+        cls = config.MARKDOWN_CLASS
+    else:
+        cls = markdown.Markdown
+
+except ImportError:
+    cls = markdown.Markdown
+
+
+md = cls(output_format="html5") # means we can globally register markdown extensions with "poobrains_markdown.md.registerExtensions
 
 
 class MarkdownString(str):
 
     def render(self):
-        return jinja2.Markup(parser.convert(self))
+        return jinja2.Markup(md.convert(self))
 
 
 class MarkdownFieldDescriptor(peewee.FieldDescriptor):
