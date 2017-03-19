@@ -11,7 +11,7 @@ def magic_markdown_loader(storable, handle):
         storables[k.lower()] = v # Allows us to use the correct case, or just lowercase
 
     cls = storables[storable]
-    instance = cls.load(handle)
+    return cls.load(handle)
 
 
 class MagicDict(dict):
