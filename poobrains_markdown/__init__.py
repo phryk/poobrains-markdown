@@ -62,7 +62,16 @@ class MagicDict(dict):
                         except:
                             url = "NOLINK" # FIXME: What's the more elegant version of this, again?
 
-                    return (url, instance.title if hasattr(instance, 'title') else None)
+                    if hasattr(instance, 'reference_title'):
+                        title = instance.reference_title
+                    elif hasattr(instance, 'title'):
+                        title = instance.title
+                    elif hasattr(instance, 'description'):
+                        title = instance.description
+                    else:
+                        title = None
+
+                    return (url, title)
 
                 except:
                     raise KeyError("Couldn't load '%s.%s'." % storable, handle)
