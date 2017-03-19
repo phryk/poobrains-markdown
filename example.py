@@ -15,6 +15,11 @@ class Article(poobrains.auth.Administerable):
 
     @property
     def reference_title(self):
+
+        """
+        prepends Florb before the title for magic markdown references ("[text][storable/handle]")
+        """
+
         return "Florb %s" % self.title
 
 if __name__ == '__main__':
