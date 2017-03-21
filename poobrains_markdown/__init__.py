@@ -27,7 +27,7 @@ class MagicDict(dict):
 
 
     def __contains__(self, key):
-        import pudb; pudb.set_trace()
+        
         if not super(MagicDict, self).__contains__(key):
 
             if self._valid_magickey(key):
