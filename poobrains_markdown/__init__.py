@@ -58,14 +58,20 @@ class MagicDict(dict):
                     except:
 
                         try:
-                            url = instance.url('teaser')
+                            url = instance.url('raw')
                         except:
-                            url = "NOLINK" # FIXME: What's the more elegant version of this, again?
+
+                            try:
+                                url = instance.url('teaser')
+                            except:
+                                url = "#NOLINK" # FIXME: What's the more elegant version of this, again?
 
                     if hasattr(instance, 'reference_title'):
                         title = instance.reference_title
                     elif hasattr(instance, 'title'):
                         title = instance.title
+                    elif hasattr(instance, 'filename'):
+                        title = instance.filename
                     elif hasattr(instance, 'description'):
                         title = instance.description
                     else:
